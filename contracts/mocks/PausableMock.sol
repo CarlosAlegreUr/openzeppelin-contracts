@@ -28,4 +28,20 @@ contract PausableMock is Pausable {
     function unpause() external {
         _unpause();
     }
+
+    function pauseFor(uint256 duration) external {
+        _pauseFor(duration);
+    }
+
+    function unpauseAfterPausedFor() external {
+        _unpauseAfterPausedFor();
+    }
+
+    function getPausedForDeadline() external view returns (uint256) {
+        return _unpauseDeadline();
+    }
+
+    function getPausedForDeadlineAndTimestamp() external view returns (uint256, uint256) {
+        return (_unpauseDeadline(), block.timestamp);
+    }
 }
