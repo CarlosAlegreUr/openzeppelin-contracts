@@ -30,11 +30,7 @@ contract PausableMock is Pausable {
     }
 
     function pauseFor(uint256 duration) external {
-        _pauseFor(duration);
-    }
-
-    function unpauseAfterPausedFor() external {
-        _unpauseAfterPausedFor();
+        _pauseFor(uint32(duration));
     }
 
     function getPausedForDeadline() external view returns (uint256) {
@@ -42,6 +38,6 @@ contract PausableMock is Pausable {
     }
 
     function getPausedForDeadlineAndTimestamp() external view returns (uint256, uint256) {
-        return (_unpauseDeadline(), block.timestamp);
+        return (_unpauseDeadline(), clock());
     }
 }
